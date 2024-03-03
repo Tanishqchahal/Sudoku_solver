@@ -47,11 +47,18 @@ class Board:
             for row in range(9)
         )
 
-     def valid_in_square(self, row, col, num):
+    def valid_in_square(self, row, col, num):
         row_start = (row // 3) * 3
         col_start=(col // 3) * 3
         for row_no in range(row_start, row_start + 3):
             for col_no in range(col_start, col_start + 3):
                 if self.board[row_no][col_no] == num:
                     return False
-        return True    
+        return True
+
+    def is_valid(self, empty, num):
+        row, col = empty
+        valid_in_row = self.valid_in_row(row, num)
+        valid_in_col = self.valid_in_col(col, num)
+        valid_in_square = self.valid_in_square(row, col, num)
+        return all([valid_in_row, valid_in_col, valid_in_square])    
