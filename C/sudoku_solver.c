@@ -45,6 +45,7 @@ void findEmptyCell(int grid[N][N], int emptyCell[2])
             {
                 emptyCell[0] = row;
                 emptyCell[1] = col;
+                return;
                
             }
         }
